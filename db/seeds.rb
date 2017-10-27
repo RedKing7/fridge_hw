@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Fridge.destroy_all
 
-Fridge.create(location: 'Atlanta', brand: 'Frigidaire', size: 20)
-Fridge.create(location: 'Garage', brand: 'General Electric', size: 15)
-Fridge.create(location: 'Kitchen', brand: 'LG', size: 30)
+fridge1 = Fridge.create(location: 'Atlanta', brand: 'Frigidaire', size: 20)
+fridge2 = Fridge.create(location: 'Garage', brand: 'General Electric', size: 15)
+fridge3 = Fridge.create(location: 'Kitchen', brand: 'LG', size: 30)
 
-Food.create(fridge_id: 1, name: 'apple', weight: 4, vegan: true)
-Food.create(fridge_id: 2, name: 'banana', weight: 3, vegan: true)
-Food.create(fridge_id: 3, name: 'grapes', weight: 2, vegan: true)
+Food.create(fridge_id: fridge1.id, name: 'apple', weight: 4, vegan: true)
+Food.create(fridge_id: fridge2.id, name: 'banana', weight: 3, vegan: true)
+Food.create(fridge_id: fridge3.id, name: 'grapes', weight: 2, vegan: true)
 
-Food.create(fridge_id: 1, name: 'steak', weight: 8, vegan: false)
+Food.create(fridge_id: fridge1.id, name: 'steak', weight: 8, vegan: false)
 
-Drink.create(fridge_id: 1, name: 'Dr.Pepper', size: 8, alcoholic: false)
-Drink.create(fridge_id: 2, name: 'Milk', size: 64, alcoholic: false)
-Drink.create(fridge_id: 3, name: 'Orange Juice', size: 32, alcoholic: false)
+Drink.create(fridge_id: fridge1.id, name: 'Dr.Pepper', size: 8, alcoholic: false)
+Drink.create(fridge_id: fridge2.id, name: 'Milk', size: 64, alcoholic: false)
+Drink.create(fridge_id: fridge3.id, name: 'Orange Juice', size: 32, alcoholic: false)
