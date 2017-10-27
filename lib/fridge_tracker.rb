@@ -8,7 +8,7 @@ def list_all_fridges
   Fridge.all.each do |fridge|
     print '|ID: ', fridge.id
     print '| brand: ', fridge.brand
-    print ' | size: ', fridge.size
+    print ' | size: ', fridge.size, 'ft^3'
     print ' | location: ', fridge.location
     puts
   end
@@ -22,7 +22,7 @@ def show_food(fridge_id)
   Fridge.find(fridge_id).foods.each do |item|
     print 'food id: ', item.id
     print ' | name: ', item.name
-    print ' | weight: ', item.weight
+    print ' | weight: ', item.weight, 'lbs.'
     print ' | vegan: ', item.vegan
     print ' | put in fridge: ', item.created_at
     puts
@@ -36,8 +36,7 @@ def show_drinks(fridge_id)
   Fridge.find(fridge_id).drinks.each do |item|
     print 'Drink id: ', item.id
     print ' | name: ', item.name
-    print ' | size: ', item.size
-    print ' | put in fridge: ', item.created_at
+    print ' | size: ', item.size, 'oz.'
     puts
   end
   puts
