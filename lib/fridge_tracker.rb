@@ -51,7 +51,7 @@ def pick_fridge
   case input
   when 1
     show_food(fridge_id)
-  when
+  when 2
     show_drinks(fridge_id)
   else
     puts 'invalid choice'
@@ -82,6 +82,37 @@ def delete_fridge
   puts 'Fridge ', fridge_id, 'deleted'
 end
 
+def remove_food(fridge_id)
+  puts 'ID of food item to consume?'
+  food_id = gets.chomp.to_i
+  Fridge.find(fridge_id).foods.find(food_id).destroy
+  print 'food item ', food_id, ' consumed'
+  puts
+end
+
+def remove_drink(fridge_id)
+  puts 'ID of drink to consume?'
+  drink_id = gets.chomp.to_i
+  
+  Fridge.find(fridge_id).drinks.find(drink_id).destroy
+  print 'drink ', drink_id, ' drunk'
+  puts
+end
+
+def remove_from_fridge
+  puts 'ID of fridge to remove from?'
+  fridge_id = gets.chomp.to_i
+  puts 'remove food(1) or drink(2)?'
+  choice = gets.chomp.to_i
+  if choice == 1
+    remove_food(fridge_id)
+  elsif choice == 2
+    remove_drink(fridge_id)
+  else
+    puts 'invalid input'
+  end
+end
+
 input = ''
 
 while input != 'quit'
@@ -91,6 +122,7 @@ while input != 'quit'
   puts '\'1\' - view specific fridge'
   puts '\'add\' - add a fridge'
   puts '\'delete\' - remove a fridge'
+  puts '\'remove\' - eat/drink item from fridge'
   puts 'type \'quit\' to quit'
   puts '-----------------------------------------'
   input = gets.chomp.downcase
@@ -103,5 +135,7 @@ while input != 'quit'
     add_fridge
   when 'delete'
     delete_fridge
+  when 'remove'
+    remove_from_fridge
   end
 end
